@@ -1146,7 +1146,6 @@ static Stanza *stanzaRandom()
   srand((unsigned)time(&t));
 
   Stanza *lista_stanze;
-  int a = 1;
   int stanzaRandom;
 
   lista_stanze = stanza_inizio;
