@@ -394,7 +394,7 @@ void gioca()
             {
               if (giocatori[i].Stato_giocatore == 0)
               {
-                esegui_quest(giocatori[i],quest_finite);
+                esegui_quest(giocatori[i]);
               }
               else if (giocatori[i].Stato_giocatore == 1)
               {
@@ -847,7 +847,7 @@ static void inserimentoTesta (struct Stanza* nuovaStanza)
 }
 
 /* Esegue la quest, aggiorna il numero di quest finite e modifica la stanza*/
-static void esegui_quest(Giocatore giocatori,int quest_finite)
+static void esegui_quest(Giocatore giocatori)
 {
 
   if (giocatori.posizione->Tipo_stanza == 1)
