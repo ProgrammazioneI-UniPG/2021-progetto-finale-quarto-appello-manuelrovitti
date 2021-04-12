@@ -34,12 +34,7 @@ Qui inizia il gioco vero e proprio, l'ordine del turno è randomico, ogni
 giocatore può fare una sola mossa a turno, si creano le nuove stanze e
 si cambiano i puntatori delle stanze precedenti.*/
 
-// tiene conto dei turni
-static int turno = 1;
-// mi permette di ristampare le azioni eseguibili
-static int menu_flag = 0;
-// scelta dell'azione del giocatore
-static int scelta_azione = 0;
+
 // numero di astronati vivi
 static int numero_giocatori_vivi = 0;
 // numero di quest finite
@@ -255,7 +250,13 @@ void imposta_gioco()
 /* Serve per dare al giocatore di poter giocare, prendere decisioni*/
 void gioca()
 {
-
+  // tiene conto dei turni
+  int turno = 1;
+  // mi permette di ristampare le azioni eseguibili
+  int menu_flag = 0;
+  // scelta dell'azione del giocatore
+  int scelta_azione = 0;
+  
   int nem = 0;
   int ass = 0;
   int que = 0;
