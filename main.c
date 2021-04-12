@@ -71,7 +71,7 @@ int main () {
       case 2: {
         if ( impostazioni==1 ) {
           gioca ();
-          menu_flag=0;
+          menu_flag=1;
         } else {
           printf ( "\nDevi prima impostare la partita.\n" );
 
