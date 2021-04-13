@@ -118,6 +118,7 @@ void imposta_gioco()
     printf("\nNumero di giocatori ? ( Min 4 - Max 10 )\n");
     printf("\n-->");
     scanf("%d", &numero_giocatori);
+    while (getchar () != '\n');
     numero_giocatori_vivi = numero_giocatori;
     if (numero_giocatori < 4 || numero_giocatori > 10)
     {
@@ -184,6 +185,7 @@ void imposta_gioco()
            "%d)\n\n-->",
            numero_giocatori, (numero_giocatori)*5);
     scanf("%hu", &quest_da_finire);
+    while (getchar () != '\n');
     if (quest_da_finire >= (numero_giocatori) && quest_da_finire <= (numero_giocatori)*5)
     {
       printf("\nIl numero di quest da completare è: %d\n", quest_da_finire);
@@ -204,6 +206,7 @@ void imposta_gioco()
     printf("Ora puoi decidere:\nDigita 1 per vedere chi sono gli impostori.\n");
     printf("Digita 2 per tornare al menu e poter giocare\n\n-->");
     scanf("%d", &scelta_fine_impostazioni);
+    while (getchar () != '\n');
     if (scelta_fine_impostazioni < 1 || scelta_fine_impostazioni > 2)
     {
       printf("\nSᴘɪᴀᴄᴇɴᴛᴇ, ɴᴜᴍᴇʀᴏ ɴᴏɴ ᴠᴀʟɪᴅᴏ\n");
@@ -361,7 +364,7 @@ void gioca()
           }
           printf("-->");
           scanf("%d", &scelta_azione);
-          getchar();
+          while (getchar () != '\n');
 
           if (scelta_azione < 1 || scelta_azione > 4)
           {
@@ -702,6 +705,7 @@ static void avanza(Giocatore giocatori)
     printf(
         "Digita 3 per andare a sinistra.\nDigita 4 per rimanere fermo.\n\n-->");
     scanf("%d", &direzione);
+    while (getchar () != '\n');
 
     switch (direzione)
     {
@@ -920,6 +924,7 @@ static void uccidi(Giocatore giocatori1)
     }
     printf("\n-->");
     scanf("%d", &risposta);
+    while (getchar () != '\n');
     s = risposta;
 
     if (s < 0 || s > r)
