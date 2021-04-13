@@ -26,6 +26,7 @@ int main () {
     printf ( "Digita 3 per chiudere il gioco.\n" );
     printf ( "\n--> " );
     scanf ( "%d",&scelta_menu );
+    while (getchar () != '\n');
     if ( scelta_menu<1 || scelta_menu>3 ) {
       printf ( "\nsᴄᴇʟᴛᴀ ɴᴏɴ ᴠᴀʟɪᴅᴀ\n\n" );
 
