@@ -14,7 +14,7 @@ unsigned short quest_da_finire = 0;
 // stanza di partenza
 static Stanza *stanza_inizio;
 // lista stanze
-//static Stanza *lista_stanze;
+static Stanza *lista_stanze;
 
 /*                        IMPOSTA GIOCO
   Qui viene scelto il numero di giocatori, impostori, il colore,
@@ -768,6 +768,7 @@ static void avanza(Giocatore giocatori)
     }
     case 4:
     {
+      nuova_stanza = giocatori.posizione;
       printf("Sei rimasto fermo nella stanza.\n");
       break;
     }
@@ -1097,9 +1098,7 @@ static int probPerGiocatore(Giocatore giocatori1)
 /*Serve agli impstori per spostarsi piu velocemente in maniera randomica*/
 static void usa_botola(Giocatore *giocatore)
 {
-  Stanza *lista_stanze;
   int ass = 0;
-  lista_stanze = stanza_inizio;
   ass = controlloBotola(ass);
 
   if (ass > 1)
@@ -1123,7 +1122,7 @@ static Stanza *stanzaRandomBotola()
 {
   time_t t;
   srand((unsigned)time(&t));
-  Stanza *lista_stanze;
+
   int stanzaRandom;
   lista_stanze = stanza_inizio;
 
@@ -1136,7 +1135,11 @@ static Stanza *stanzaRandomBotola()
 
     for (int i = 0; i < stanzaRandom; i++)
     {
-      if (lista_stanze == NULL) { break;}
+      if (lista_stanze == NULL) 
+      { 
+        lista_stanze = stanza_inizio;
+        break;
+      }
       lista_stanze = lista_stanze->s_successiva;
     }
   }
@@ -1150,7 +1153,6 @@ static Stanza *stanzaRandom()
   time_t t;
   srand((unsigned)time(&t));
 
-  Stanza *lista_stanze;
   int stanzaRandom;
 
   lista_stanze = stanza_inizio;
@@ -1171,7 +1173,7 @@ static Stanza *stanzaRandom()
 static int controlloBotola(int control)
 {
 
-  Stanza *lista_stanze = stanza_inizio;
+  lista_stanze = stanza_inizio;
 
   while (lista_stanze != NULL)
   {
