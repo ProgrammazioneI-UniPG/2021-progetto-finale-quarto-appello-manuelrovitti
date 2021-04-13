@@ -1109,7 +1109,8 @@ static void usa_botola(Giocatore *giocatore)
   if (ass > 1)
   {
     printf("\nTi sposterai in una stanza con botola.\n");
-    giocatore->posizione = stanzaRandomBotola();
+    giocatore->posizione = stanzaRandomBotola(&giocatore);
+    giocatore->posizione = lista_stanze;
     printf("\nTi sei spostato nella stanza: %p, %s.\n", giocatore->posizione, stampa_tipo_stanza(giocatore->posizione->Tipo_stanza));
     return;
   }
@@ -1123,7 +1124,7 @@ static void usa_botola(Giocatore *giocatore)
 }
 
 /*Serve per randomizare in quale stanza con botola si deve spostare impostore*/
-static Stanza *stanzaRandomBotola()
+static Stanza *stanzaRandomBotola(Giocatore *giocatore)
 {
   time_t t;
   srand((unsigned)time(&t));
@@ -1131,7 +1132,7 @@ static Stanza *stanzaRandomBotola()
   int stanzaRandom;
   lista_stanze = stanza_inizio;
 
-  while (lista_stanze->Tipo_stanza != 3 )
+  while (lista_stanze->Tipo_stanza != 3 && lista_stanza != giocatore->posizione)
   {
     do
     {
@@ -1148,7 +1149,8 @@ static Stanza *stanzaRandomBotola()
       lista_stanze = lista_stanze->s_successiva;
     }
   }
-
+  
+  giocatore->posizione = lista_stanze;
   return lista_stanze;
 }
 
