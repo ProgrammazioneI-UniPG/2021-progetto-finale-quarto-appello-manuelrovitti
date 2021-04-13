@@ -263,7 +263,7 @@ void gioca()
   int fine = 0;
 
   numero_giocatori_vivi -= numero_impostori;
-
+  quest_finite = 0;
   system("clear");
 
   printf("\nBenvenuto sulla nave.\n");
