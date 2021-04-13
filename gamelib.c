@@ -522,7 +522,7 @@ static void num_random_giocatore()
   }
 }
 
-/* Randomizza il turno -------------------->risolvere stampa nome */
+/* Randomizza il turno  */
 static void random_turni(Giocatore* giocatori,size_t n)
 {
   time_t t;
