@@ -14,3 +14,5 @@ ed eventuali note sulla realizzazione del progetto, come nuove funzionalità agg
 
 
 1) Ho aggiunto come funzione di gioco ( come gioco originale) che se rimane lo stesso numero di astronauti e impostori, darà la partita vinta agli impostori.
+
+2) Una volta terminata la partita in corso, si verrà portati al menù dove, se si desidera ancora giocare, bisognerà reimpostare la partita.
