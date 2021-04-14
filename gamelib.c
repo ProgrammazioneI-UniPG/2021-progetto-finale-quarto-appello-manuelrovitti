@@ -82,7 +82,7 @@ static void chiamata_emergenza();
 //serve per calcolare la probabilità per ogni giocatore di essere espulso
 static int probPerGiocatore();
 // serve per far usare la botola agli impostori
-static void usa_botola();
+static Stanza* usa_botola();
 // serve per randomizzare la stanza con botola
 static Stanza *stanzaRandomBotola();
 // serve per randomizzare la stanza
@@ -408,6 +408,7 @@ void gioca()
             else if (giocatori[i].posizione->Tipo_stanza == 3 && giocatori[i].Stato_giocatore == 1)
             {
               usa_botola(&giocatori[i]);
+              giocatori[i].posizione = lista_stanze;
             }
           }
           else if (scelta_azione == 4 && ass == 1)
@@ -500,7 +501,7 @@ static void num_random_giocatore()
   time_t t;
   srand((unsigned)time(&t));
   // array che serve per memorizzare qualcosa a breve termine
-  static int array[10];
+  int array[10];
 
   for (int i = 0; i < 10; i++)
   {
@@ -532,8 +533,8 @@ static void random_turni(Giocatore* giocatori,size_t n)
   srand((unsigned)time(&t));
 
   // array che serve per memorizzare qualcosa a breve termine
-  static int array[10];
-  static Giocatore fake [10];
+  int array[10];
+  Giocatore fake [10];
 
   for (int i = 0; i < numero_giocatori; i++)
   {
@@ -702,8 +703,7 @@ static void avanza(Giocatore giocatori)
   {
     printf("\nIn quale direzioni desideri andare?\n");
     printf("\nDigita 1 per andare avanti.\nDigita 2 per andare a destra.\n");
-    printf(
-        "Digita 3 per andare a sinistra.\nDigita 4 per rimanere fermo.\n\n-->");
+    printf("Digita 3 per andare a sinistra.\nDigita 4 per rimanere fermo.\n\n-->");
     scanf("%d", &direzione);
     while (getchar () != '\n');
 
@@ -1101,7 +1101,7 @@ static int probPerGiocatore(Giocatore giocatori1)
 }
 
 /*Serve agli impstori per spostarsi piu velocemente in maniera randomica*/
-static void usa_botola(Giocatore *giocatore)
+static Stanza* usa_botola(Giocatore *giocatore)
 {
   int ass = 0;
   ass = controlloBotola(ass);
@@ -1112,14 +1112,14 @@ static void usa_botola(Giocatore *giocatore)
     giocatore->posizione = stanzaRandomBotola(&giocatore);
     giocatore->posizione = lista_stanze;
     printf("\nTi sei spostato nella stanza: %p, %s.\n", giocatore->posizione, stampa_tipo_stanza(giocatore->posizione->Tipo_stanza));
-    return;
+    return lista_stanze;
   }
   else
   {
     printf("\nTi sposterai in una stanza random.\n");
     giocatore->posizione = stanzaRandom();
     printf("\nTi sei spostato nella stanza: %p, %s.\n", giocatore->posizione, stampa_tipo_stanza(giocatore->posizione->Tipo_stanza));
-    return;
+    return lista_stanze;
   }
 }
 
